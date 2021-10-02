@@ -7,3 +7,16 @@ java {
     sourceCompatibility = JavaVersion.VERSION_1_7
     targetCompatibility = JavaVersion.VERSION_1_7
 }
+
+dependencies{
+    implementation project(":common")
+    implementation project(":domain")
+
+    implementation "io.ktor:ktor-client-core:$ktor_version"
+    implementation "io.ktor:ktor-client-android:$ktor_version"
+    implementation "io.ktor:ktor-client-serialization:$ktor_version"
+    implementation "io.ktor:ktor-client-logging:$ktor_version"
+    implementation "ch.qos.logback:logback-classic:1.2.3"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kt_serialization_version"
+}
