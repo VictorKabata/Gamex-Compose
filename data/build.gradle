@@ -19,4 +19,6 @@ dependencies{
     implementation "ch.qos.logback:logback-classic:1.2.3"
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kt_serialization_version"
+
+    implementation "io.insert-koin:koin-core:$koin_version"
 }
