@@ -21,7 +21,6 @@ data class Result(
     val saturated_color: String,
     val short_screenshots: List<ShortScreenshot>,
     val slug: String,
-    val stores: List<Stores>,
     val suggestions_count: Int,
     val tags: List<Tag>,
     val tba: Boolean,

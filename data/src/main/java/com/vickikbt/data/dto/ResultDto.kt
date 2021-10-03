@@ -24,7 +24,6 @@ data class ResultDto(
     val saturated_color: String,
     val short_screenshots: List<ShortScreenshotDto>,
     val slug: String,
-    val stores: List<StoresDto>,
     val suggestions_count: Int,
     val tags: List<TagDto>,
     val tba: Boolean,
