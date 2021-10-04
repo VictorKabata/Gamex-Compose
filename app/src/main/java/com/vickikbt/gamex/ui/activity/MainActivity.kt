@@ -12,9 +12,6 @@ import com.vickikbt.gamex.ui.theme.GamexTheme
 
 class MainActivity : ComponentActivity() {
 
-    /*private val viewModel by viewModel<HomeViewModel>()
-    private fun injectFeatures()= loadAppModule*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -24,7 +21,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        //injectFeatures()
     }
 
 }
