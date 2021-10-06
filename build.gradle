@@ -8,6 +8,7 @@ buildscript {
         koin_version = "3.1.2"
         coroutines_version="1.5.2"
         androidCore_version = '1.6.0'
+        navigation_version="2.4.0-alpha02"
     }
 
     repositories {
