@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gamex">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Gamex.NoActionBar">
