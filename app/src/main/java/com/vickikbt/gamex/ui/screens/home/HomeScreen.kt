@@ -1,5 +1,6 @@
 package com.vickikbt.gamex.ui.screens.home
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -25,10 +26,15 @@ import com.vickikbt.domain.models.Game
 import com.vickikbt.gamex.R
 import com.vickikbt.gamex.ui.theme.ColorPrimary
 
+@ExperimentalFoundationApi
 @Composable
-fun HomeScreen() {
-    Scaffold(topBar = { SearchBar() }) {
+fun HomeScreen(viewModel: HomeViewModel? = null) {
+    val gamesState = viewModel?.state?.value
 
+    Log.e("VickiKbt", "Games list: ${gamesState?.games}")
+
+    Scaffold(topBar = { SearchBar() }) {
+        //GamesGrid(gamesList = gamesState.games!!.results)
     }
 }
 
@@ -54,15 +60,18 @@ fun SearchBar() {
 @ExperimentalFoundationApi
 @Composable
 fun GamesGrid(gamesList: List<Game>) {
+
     LazyVerticalGrid(cells = GridCells.Fixed(2), contentPadding = PaddingValues(8.dp)) {
         items(gamesList) { item ->
-            GameGridItem(gameImageUrl = item.background_image, gameTitle = item.name)
+            GameGridItem(gameImageUrl = item.background_image, gameTitle = item.name) {
+                //ToDo: Navigate to game detail on click
+            }
         }
     }
 }
 
 @Composable
-fun GameGridItem(gameImageUrl: String, gameTitle: String) {
+fun GameGridItem(gameImageUrl: String, gameTitle: String, onItemClick: (Game) -> Unit) {
     Column(modifier = Modifier.padding(8.dp)) {
         Card(
             modifier = Modifier
@@ -92,5 +101,5 @@ fun GameGridItem(gameImageUrl: String, gameTitle: String) {
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
-    HomeScreen()
+    //HomeScreen()
 }

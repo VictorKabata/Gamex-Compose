@@ -75,4 +75,7 @@ dependencies {
 
     //Coil-Image Loader
     implementation "io.coil-kt:coil-compose:$coil_version"
+
+    //Timber-Logging
+    implementation "com.jakewharton.timber:timber:$timber_version"
 }

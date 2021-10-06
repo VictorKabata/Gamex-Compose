@@ -17,15 +17,15 @@ interface GamesService {
         perPage: Int
     ): GamesResponseDto?
 
-    companion object {
-        fun create(): GamesService {
-            return GamesServiceImpl(
-                client = HttpClient(Android) {
-                    install(Logging) { level = LogLevel.ALL }
-                    install(JsonFeature) { serializer = KotlinxSerializer() }
-                }
-            )
-        }
+
+    operator fun invoke(): GamesService {
+        return GamesServiceImpl(
+            client = HttpClient(Android) {
+                install(Logging) { level = LogLevel.ALL }
+                install(JsonFeature) { serializer = KotlinxSerializer() }
+            }
+        )
     }
+
 
 }

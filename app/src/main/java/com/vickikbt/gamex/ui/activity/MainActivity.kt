@@ -3,6 +3,7 @@ package com.vickikbt.gamex.ui.activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,19 +17,29 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.vickikbt.gamex.di.loadPresentationModule
 import com.vickikbt.gamex.ui.navigation.Navigation
 import com.vickikbt.gamex.ui.navigation.NavigationItem
+import com.vickikbt.gamex.ui.screens.home.HomeScreen
+import com.vickikbt.gamex.ui.screens.home.HomeViewModel
 import com.vickikbt.gamex.ui.theme.ColorPrimary
 import com.vickikbt.gamex.ui.theme.GamexTheme
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
+@ExperimentalFoundationApi
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val homeViewModel = getViewModel<HomeViewModel>()
+        //fun injectFeature()= loadPresentationModule
+
         setContent {
             GamexTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    MainScreen()
+                    //injectFeature()
+                    MainScreen(homeViewModel = homeViewModel)
                 }
             }
         }
@@ -36,12 +47,14 @@ class MainActivity : ComponentActivity() {
 
 }
 
+@ExperimentalFoundationApi
 @Composable
-fun MainScreen() {
+fun MainScreen(homeViewModel: HomeViewModel) {
     val navController = rememberNavController()
 
     Scaffold(bottomBar = { BottomNavigationBar(navController = navController) }) {
         Navigation(navController = navController)
+        HomeScreen(viewModel = homeViewModel)
     }
 }
 

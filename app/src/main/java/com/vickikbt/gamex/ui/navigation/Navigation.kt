@@ -1,5 +1,6 @@
 package com.vickikbt.gamex.ui.navigation
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -8,6 +9,7 @@ import com.vickikbt.gamex.ui.screens.favorites.FavoritesScreen
 import com.vickikbt.gamex.ui.screens.home.HomeScreen
 import com.vickikbt.gamex.ui.screens.settings.SettingsScreen
 
+@ExperimentalFoundationApi
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = NavigationItem.Home.route) {
