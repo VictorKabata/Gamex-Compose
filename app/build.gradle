@@ -70,5 +70,9 @@ dependencies {
     //Koin Android-Dependency injection in android module
     implementation "io.insert-koin:koin-android:$koin_version"
 
+    //Compose Navigation-Navigation between various screens
     implementation "androidx.navigation:navigation-compose:$navigation_version"
+
+    //Coil-Image Loader
+    implementation "io.coil-kt:coil-compose:$coil_version"
 }

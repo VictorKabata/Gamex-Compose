@@ -1,6 +1,6 @@
 package com.vickikbt.domain.models
 
-data class Result(
+data class Game(
     val added: Int,
     val background_image: String,
     val clip: String,

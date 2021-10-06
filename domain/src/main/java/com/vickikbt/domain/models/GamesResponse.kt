@@ -6,6 +6,6 @@ data class GamesResponse(
     val next: String,
     val previous: String,
     val recommendations_count: Int,
-    val results: List<Result>,
+    val results: List<Game>,
     val reviews_count: Int
 )

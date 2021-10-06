@@ -3,7 +3,7 @@ package com.vickikbt.data.dto
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ResultDto(
+data class GameDto(
     val added: Int,
     val background_image: String,
     val clip: String,

@@ -9,6 +9,6 @@ data class GamesResponseDto(
     val next: String,
     val previous: String,
     val recommendations_count: Int,
-    val results: List<ResultDto>,
+    val results: List<GameDto>,
     val reviews_count: Int
 )

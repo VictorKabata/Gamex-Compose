@@ -56,8 +56,8 @@ internal fun RatingDto.toDomain(): Rating {
     )
 }
 
-internal fun ResultDto.toDomain(): Result {
-    return Result(
+internal fun GameDto.toDomain(): Game {
+    return Game(
         added = this.added,
         background_image = this.background_image,
         clip = this.clip,
