@@ -1,8 +1,9 @@
-package com.vickikbt.data.dto
+package com.vickikbt.network.models
 
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
+
 data class PlatformsDto(
+    @SerializedName("platform")
     val platform: PlatformDto
 )

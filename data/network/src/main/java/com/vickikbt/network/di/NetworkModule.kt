@@ -1,6 +1,7 @@
 package com.vickikbt.network.di
 
-import com.vickikbt.domain.utils.Constants.BASE_URL
+import com.vickikbt.common.Constants
+import com.vickikbt.network.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -11,11 +12,11 @@ import java.util.concurrent.TimeUnit
 val networkModule = module {
     single {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(provideOkhttp())
             .build()
-            .create(com.vickikbt.network.ApiService::class.java)
+            .create(ApiService::class.java)
     }
 }
 

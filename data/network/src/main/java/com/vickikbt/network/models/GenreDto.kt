@@ -1,12 +1,20 @@
-package com.vickikbt.data.dto
+package com.vickikbt.network.models
 
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class GenreDto(
-    val games_count: Int,
+    @SerializedName("games_count")
+    val gamesCount: Int,
+
+    @SerializedName("id")
     val id: Int,
-    val image_background: String,
+
+    @SerializedName("image_background")
+    val imageBackground: String,
+
+    @SerializedName("name")
     val name: String,
+
+    @SerializedName("slug")
     val slug: String
 )

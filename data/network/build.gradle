@@ -22,18 +22,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
 }
 
 dependencies {
+    api project(":common")
+
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_vesion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_vesion"
+
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingIntercepter_version"
+
+    //Koin Android-Dependency injection in android module
+    api "io.insert-koin:koin-android:$koin_version"
 }

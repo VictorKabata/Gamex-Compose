@@ -1,11 +1,17 @@
-package com.vickikbt.data.dto
+package com.vickikbt.network.models
 
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class RatingDto(
+    @SerializedName("count")
     val count: Int,
+
+    @SerializedName("id")
     val id: Int,
+
+    @SerializedName("percent")
     val percent: Double,
+
+    @SerializedName("title")
     val title: String
 )

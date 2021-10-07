@@ -1,7 +1,7 @@
-package com.vickikbt.data.mappers
+package com.vickikbt.repository.mappers
 
-import com.vickikbt.data.dto.*
 import com.vickikbt.domain.models.*
+import com.vickikbt.network.models.*
 
 internal fun GamesResponseDto.toDomain(): GamesResponse {
     return GamesResponse(
@@ -10,7 +10,7 @@ internal fun GamesResponseDto.toDomain(): GamesResponse {
         next = this.next,
         previous = this.previous,
         recommendations_count = this.recommendations_count,
-        results = this.results.map { it.toDomain() },
+        results = this.games.map { it.toDomain() },
         reviews_count = this.reviews_count
     )
 
@@ -18,9 +18,9 @@ internal fun GamesResponseDto.toDomain(): GamesResponse {
 
 internal fun GenreDto.toDomain(): Genre {
     return Genre(
-        games_count = this.games_count,
+        games_count = this.gamesCount,
         id = this.id,
-        image_background = this.image_background,
+        image_background = this.imageBackground,
         name = this.name,
         slug = this.slug
     )
@@ -29,14 +29,14 @@ internal fun GenreDto.toDomain(): Genre {
 
 internal fun PlatformDto.toDomain(): Platform {
     return Platform(
-        games_count = this.games_count,
+        games_count = this.gamesCount,
         id = this.id,
         image = this.image,
-        image_background = this.image_background,
+        image_background = this.imageBackground,
         name = this.name,
         slug = this.slug,
-        year_end = this.year_end,
-        year_start = this.year_start
+        year_end = this.yearEnd,
+        year_start = this.yearStart
     )
 }
 
@@ -59,26 +59,26 @@ internal fun RatingDto.toDomain(): Rating {
 internal fun GameDto.toDomain(): Game {
     return Game(
         added = this.added,
-        background_image = this.background_image,
+        background_image = this.backgroundImage,
         clip = this.clip,
-        community_rating = this.community_rating,
-        dominant_color = this.dominant_color,
+        community_rating = this.communityRating,
+        dominant_color = this.dominantColor,
         genres = this.genres.map { it.toDomain() },
         id = this.id,
         name = this.name,
         platforms = this.platforms.map { it.toDomain() },
         playtime = this.playtime,
         rating = this.rating,
-        rating_top = this.rating_top,
+        rating_top = this.ratingTop,
         ratings = this.ratings.map { it.toDomain() },
-        ratings_count = this.ratings_count,
+        ratings_count = this.ratingsCount,
         released = this.released,
-        reviews_count = this.reviews_count,
-        reviews_text_count = this.reviews_text_count,
-        saturated_color = this.saturated_color,
-        short_screenshots = this.short_screenshots.map { it.toDomain() },
+        reviews_count = this.reviewsCount,
+        reviews_text_count = this.reviewsTextCount,
+        saturated_color = this.saturatedColor,
+        short_screenshots = this.shortScreenshots.map { it.toDomain() },
         slug = this.slug,
-        suggestions_count = this.suggestions_count,
+        suggestions_count = this.suggestionsCount,
         tags = this.tags.map { it.toDomain() },
         tba = this.tba,
         updated = this.updated
@@ -94,9 +94,9 @@ internal fun ShortScreenshotDto.toDomain(): ShortScreenshot {
 
 internal fun TagDto.toDomain(): Tag {
     return Tag(
-        games_count = this.games_count,
+        games_count = this.gamesCount,
         id = this.id,
-        image_background = this.image_background,
+        image_background = this.imageBackground,
         language = this.language,
         name = this.name,
         slug = this.slug

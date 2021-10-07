@@ -1,4 +1,4 @@
-package com.vickikbt.data.utils
+package com.vickikbt.network.utils
 
 import java.io.IOException
 

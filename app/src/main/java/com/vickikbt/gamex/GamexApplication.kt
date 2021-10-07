@@ -1,9 +1,9 @@
 package com.vickikbt.gamex
 
 import android.app.Application
-import com.vickikbt.data.di.dataModule
 import com.vickikbt.domain.di.domainModule
-import com.vickikbt.gamex.di.presentationModule
+import com.vickikbt.network.di.networkModule
+import com.vickikbt.repository.di.repositoryModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -21,7 +21,7 @@ class GamexApplication : Application() {
     }
 
     private fun initKoin() {
-        val modules=listOf(domainModule, dataModule, presentationModule)
+        val modules = listOf(domainModule, networkModule, repositoryModule)
 
         startKoin {
             androidLogger(level = Level.NONE)

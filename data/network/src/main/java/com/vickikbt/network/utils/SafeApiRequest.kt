@@ -1,6 +1,5 @@
-package com.vickikbt.repository.utils
+package com.vickikbt.network.utils
 
-import com.vickikbt.data.utils.ApiException
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -16,7 +15,7 @@ abstract class SafeApiRequest {
             val message = StringBuilder()
             responseErr.let {
                 try {
-                    message.append(JSONObject(it).getString("status_message"))
+                    message.append(JSONObject(it).getString("error"))
                 } catch (e: JSONException) {
                 }
             }

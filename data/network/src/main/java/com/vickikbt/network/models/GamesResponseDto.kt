@@ -1,28 +1,26 @@
-package com.vickikbt.data.dto
+package com.vickikbt.network.models
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class GamesResponseDto(
-    @SerialName("count")
+    @SerializedName("count")
     val count: Int,
 
-    @SerialName("game_count")
+    @SerializedName("game_count")
     val games_count: Int,
 
-    @SerialName("next")
+    @SerializedName("next")
     val next: String,
 
-    @SerialName("previous")
+    @SerializedName("previous")
     val previous: String,
 
-    @SerialName("recommendations_count")
+    @SerializedName("recommendations_count")
     val recommendations_count: Int,
 
-    @SerialName("results")
-    val results: List<GameDto>,
+    @SerializedName("results")
+    val games: List<GameDto>,
 
-    @SerialName("reviews_count")
+    @SerializedName("reviews_count")
     val reviews_count: Int
 )

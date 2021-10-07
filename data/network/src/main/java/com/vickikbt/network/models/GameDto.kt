@@ -1,55 +1,78 @@
-package com.vickikbt.data.dto
+package com.vickikbt.network.models
 
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class GameDto(
 
+    @SerializedName("added")
     val added: Int,
 
-    val background_image: String,
+    @SerializedName("background_image")
+    val backgroundImage: String,
 
+    @SerializedName("clip")
     val clip: String,
 
-    val community_rating: Int,
+    @SerializedName("community_rating")
+    val communityRating: Int,
 
-    val dominant_color: String,
+    @SerializedName("dominant_color")
+    val dominantColor: String,
 
+    @SerializedName("genres")
     val genres: List<GenreDto>,
 
+    @SerializedName("id")
     val id: Int,
 
+    @SerializedName("name")
     val name: String,
 
+    @SerializedName("platforms")
     val platforms: List<PlatformsDto>,
 
+    @SerializedName("playtime")
     val playtime: Int,
 
+    @SerializedName("rating")
     val rating: Double,
 
-    val rating_top: Int,
+    @SerializedName("rating_top")
+    val ratingTop: Int,
 
+    @SerializedName("ratings")
     val ratings: List<RatingDto>,
 
-    val ratings_count: Int,
+    @SerializedName("ratings_count")
+    val ratingsCount: Int,
 
+    @SerializedName("released")
     val released: String,
 
-    val reviews_count: Int,
+    @SerializedName("reviews_count")
+    val reviewsCount: Int,
 
-    val reviews_text_count: Int,
+    @SerializedName("reviews_text_count")
+    val reviewsTextCount: Int,
 
-    val saturated_color: String,
+    @SerializedName("saturated_color")
+    val saturatedColor: String,
 
-    val short_screenshots: List<ShortScreenshotDto>,
+    @SerializedName("short_screenshots")
+    val shortScreenshots: List<ShortScreenshotDto>,
 
+    @SerializedName("slug")
     val slug: String,
 
-    val suggestions_count: Int,
+    @SerializedName("suggestions_count")
+    val suggestionsCount: Int,
 
+    @SerializedName("tags")
     val tags: List<TagDto>,
 
+    @SerializedName("tba")
     val tba: Boolean,
 
+    @SerializedName("updated")
     val updated: String
 )
