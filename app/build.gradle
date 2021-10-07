@@ -51,7 +51,7 @@ android {
 
 dependencies {
     implementation project(":common")
-    //implementation project(":data")
+    implementation project(":data:repository")
     implementation project(":domain")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
