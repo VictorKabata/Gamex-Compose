@@ -9,5 +9,6 @@ dependencyResolutionManagement {
 rootProject.name = "Gamex"
 include ':app'
 include ':domain'
-include ':data'
 include ':common'
+include ':data:network'
+include ':data:repository'
