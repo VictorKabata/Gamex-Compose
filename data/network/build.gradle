@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-    api project(":common")
+    implementation project(":common")
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
@@ -44,5 +44,5 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingIntercepter_version"
 
     //Koin Android-Dependency injection in android module
-    api "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 }
