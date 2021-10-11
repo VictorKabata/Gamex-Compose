@@ -4,23 +4,23 @@ import com.google.gson.annotations.SerializedName
 
 data class GamesResponseDto(
     @SerializedName("count")
-    val count: Int,
+    val count: Int?,
 
     @SerializedName("game_count")
-    val games_count: Int,
+    val games_count: Int?,
 
     @SerializedName("next")
-    val next: String,
+    val next: String?,
 
     @SerializedName("previous")
-    val previous: String,
+    val previous: String?,
 
     @SerializedName("recommendations_count")
-    val recommendations_count: Int,
+    val recommendations_count: Int?,
 
     @SerializedName("results")
-    val games: List<GameDto>,
+    val games: List<GameDto>?,
 
     @SerializedName("reviews_count")
-    val reviews_count: Int
+    val reviews_count: Int?
 )

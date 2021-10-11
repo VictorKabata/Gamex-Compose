@@ -4,14 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class RatingDto(
     @SerializedName("count")
-    val count: Int,
+    val count: Int?,
 
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
 
     @SerializedName("percent")
-    val percent: Double,
+    val percent: Double?,
 
     @SerializedName("title")
-    val title: String
+    val title: String?
 )

@@ -7,3 +7,4 @@ val ColorSecondary = Color(0xFF2046CD)
 
 val Black = Color(0xFF000000)
 val White = Color(0xFFFFFFFF)
+//val SemiTransparent= Color(0xD9000000).compositeOver(Color.Black)

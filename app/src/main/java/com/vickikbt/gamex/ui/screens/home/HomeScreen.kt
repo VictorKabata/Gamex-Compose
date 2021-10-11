@@ -1,6 +1,5 @@
 package com.vickikbt.gamex.ui.screens.home
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -13,8 +12,10 @@ import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -25,16 +26,18 @@ import coil.compose.rememberImagePainter
 import com.vickikbt.domain.models.Game
 import com.vickikbt.gamex.R
 import com.vickikbt.gamex.ui.theme.ColorPrimary
+import org.koin.androidx.compose.getViewModel
+import timber.log.Timber
 
 @ExperimentalFoundationApi
 @Composable
-fun HomeScreen(viewModel: HomeViewModel? = null) {
-    val gamesState = viewModel?.state?.value
-
-    Log.e("VickiKbt", "Games list: ${gamesState?.games}")
+fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
+    val gamesState = viewModel.state.value
+    val gameList = gamesState.games?.results
 
     Scaffold(topBar = { SearchBar() }) {
-        //GamesGrid(gamesList = gamesState.games!!.results)
+        if (gameList != null) GamesGrid(gamesList = gameList)
+        else Timber.e("Games list is null")
     }
 }
 
@@ -63,7 +66,7 @@ fun GamesGrid(gamesList: List<Game>) {
 
     LazyVerticalGrid(cells = GridCells.Fixed(2), contentPadding = PaddingValues(8.dp)) {
         items(gamesList) { item ->
-            GameGridItem(gameImageUrl = item.background_image, gameTitle = item.name) {
+            GameGridItem(gameImageUrl = item.background_image, gameTitle = item.name!!) {
                 //ToDo: Navigate to game detail on click
             }
         }
@@ -71,7 +74,7 @@ fun GamesGrid(gamesList: List<Game>) {
 }
 
 @Composable
-fun GameGridItem(gameImageUrl: String, gameTitle: String, onItemClick: (Game) -> Unit) {
+fun GameGridItem(gameImageUrl: String?, gameTitle: String, onItemClick: (Game) -> Unit) {
     Column(modifier = Modifier.padding(8.dp)) {
         Card(
             modifier = Modifier
@@ -82,6 +85,8 @@ fun GameGridItem(gameImageUrl: String, gameTitle: String, onItemClick: (Game) ->
         ) {
             Image(
                 modifier = Modifier.fillMaxSize(),
+                alignment = Alignment.Center,
+                contentScale = ContentScale.Crop,
                 painter = rememberImagePainter(
                     data = gameImageUrl,
                     builder = { crossfade(true) }), contentDescription = null

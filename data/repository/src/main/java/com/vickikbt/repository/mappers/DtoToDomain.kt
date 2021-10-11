@@ -10,7 +10,7 @@ internal fun GamesResponseDto.toDomain(): GamesResponse {
         next = this.next,
         previous = this.previous,
         recommendations_count = this.recommendations_count,
-        results = this.games.map { it.toDomain() },
+        results = this.games?.map { it.toDomain() },
         reviews_count = this.reviews_count
     )
 
@@ -42,7 +42,7 @@ internal fun PlatformDto.toDomain(): Platform {
 
 internal fun PlatformsDto.toDomain(): Platforms {
     return Platforms(
-        platform = this.platform.toDomain()
+        platform = this.platform?.toDomain()
     )
 
 }
@@ -63,23 +63,23 @@ internal fun GameDto.toDomain(): Game {
         clip = this.clip,
         community_rating = this.communityRating,
         dominant_color = this.dominantColor,
-        genres = this.genres.map { it.toDomain() },
+        genres = this.genres?.map { it.toDomain() },
         id = this.id,
         name = this.name,
-        platforms = this.platforms.map { it.toDomain() },
+        platforms = this.platforms?.map { it.toDomain() },
         playtime = this.playtime,
         rating = this.rating,
         rating_top = this.ratingTop,
-        ratings = this.ratings.map { it.toDomain() },
+        ratings = this.ratings?.map { it.toDomain() },
         ratings_count = this.ratingsCount,
         released = this.released,
         reviews_count = this.reviewsCount,
         reviews_text_count = this.reviewsTextCount,
         saturated_color = this.saturatedColor,
-        short_screenshots = this.shortScreenshots.map { it.toDomain() },
+        short_screenshots = this.shortScreenshots?.map { it.toDomain() },
         slug = this.slug,
         suggestions_count = this.suggestionsCount,
-        tags = this.tags.map { it.toDomain() },
+        tags = this.tags?.map { it.toDomain() },
         tba = this.tba,
         updated = this.updated
     )

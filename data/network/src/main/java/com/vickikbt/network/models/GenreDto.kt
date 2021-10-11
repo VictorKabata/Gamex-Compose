@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class GenreDto(
     @SerializedName("games_count")
-    val gamesCount: Int,
+    val gamesCount: Int?,
 
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
 
     @SerializedName("image_background")
-    val imageBackground: String,
+    val imageBackground: String?,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("slug")
-    val slug: String
+    val slug: String?
 )

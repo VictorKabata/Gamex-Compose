@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 data class ShortScreenshotDto(
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
 
     @SerializedName("image")
-    val image: String
+    val image: String?
 )

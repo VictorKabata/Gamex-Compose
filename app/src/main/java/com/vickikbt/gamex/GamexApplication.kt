@@ -2,6 +2,7 @@ package com.vickikbt.gamex
 
 import android.app.Application
 import com.vickikbt.domain.di.domainModule
+import com.vickikbt.gamex.di.presentationModule
 import com.vickikbt.network.di.networkModule
 import com.vickikbt.repository.di.repositoryModule
 import org.koin.android.ext.koin.androidContext
@@ -21,7 +22,7 @@ class GamexApplication : Application() {
     }
 
     private fun initKoin() {
-        val modules = listOf(domainModule, networkModule, repositoryModule)
+        val modules = listOf(domainModule, networkModule, repositoryModule, presentationModule)
 
         startKoin {
             androidLogger(level = Level.NONE)

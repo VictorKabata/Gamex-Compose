@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class PlatformsDto(
     @SerializedName("platform")
-    val platform: PlatformDto
+    val platform: PlatformDto?
 )
