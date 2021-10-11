@@ -36,8 +36,8 @@ android {
 dependencies {
     implementation project(":common")
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     implementation "com.squareup.okhttp3:okhttp:$okhttp_vesion"
 

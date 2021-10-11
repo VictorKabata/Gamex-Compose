@@ -11,14 +11,14 @@ class GamesRepositoryImpl constructor(private val apiService: ApiService) : Game
     SafeApiRequest() {
 
     override suspend fun getGames(ordering: String, page: Int, perPage: Int): GamesResponse {
-        val getGamesResponse =
+        val getGamesResponse = safeApiRequest {
             apiService.getGames(
                 apiKey = Constants.API_KEY,
                 ordering = ordering,
                 page = page,
                 perPage = perPage
             )
-        
+        }
         return getGamesResponse.toDomain()
     }
 }
