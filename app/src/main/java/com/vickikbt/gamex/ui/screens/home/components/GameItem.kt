@@ -6,7 +6,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.vickikbt.domain.models.Game
-import com.vickikbt.gamex.ui.theme.White
 
 @Composable
 fun GameItem(
@@ -41,20 +39,18 @@ fun GameItem(
 
             Row(
                 modifier = Modifier
-                    //.padding(horizontal = 10.dp, vertical = 12.dp)
                     .fillMaxWidth()
-                    .wrapContentHeight(),
+                    .wrapContentHeight()
+                    .padding(horizontal = 10.dp, vertical = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
+                val platformLogos = platformLogo(platforms = game.platforms!!)
+
                 LazyRow {
-                    items(items = game.platforms!!) { platformItem ->
-                        PlatformChip(
-                            platformName = platformItem.platform!!.name!!,
-                            backgroundColor = MaterialTheme.colors.secondary,
-                            contentColor = White
-                        )
+                    items(items = platformLogos) { platformLogo ->
+                        PlatformLogoItem(platformImageResource = platformLogo)
                     }
                 }
 
@@ -62,7 +58,7 @@ fun GameItem(
                     Text(
                         text = game.rating.toString(),
                         fontSize = 20.sp,
-                        fontWeight = FontWeight.SemiBold,
+                        fontWeight = FontWeight.Medium,
                         maxLines = 1,
                         textAlign = TextAlign.Center
                     )
@@ -70,7 +66,7 @@ fun GameItem(
             }
 
             Text(
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 12.dp),
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
                 text = game.name.toString(),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.ExtraBold,

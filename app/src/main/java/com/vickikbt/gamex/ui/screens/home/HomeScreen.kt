@@ -1,7 +1,6 @@
 package com.vickikbt.gamex.ui.screens.home
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,7 +24,6 @@ import com.vickikbt.gamex.ui.theme.ColorPrimary
 import org.koin.androidx.compose.getViewModel
 import timber.log.Timber
 
-@ExperimentalFoundationApi
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
     val gamesState = viewModel.state.value
@@ -56,7 +54,6 @@ fun SearchBar() {
     }
 }
 
-@ExperimentalFoundationApi
 @Composable
 fun GamesGrid(gamesList: List<Game>) {
 
