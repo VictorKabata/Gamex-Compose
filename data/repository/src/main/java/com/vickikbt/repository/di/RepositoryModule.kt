@@ -6,4 +6,6 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single<GamesRepository> { GamesRepositoryImpl(get()) }
+
+    //single<InterfaceClass> { ClassThatImplementsIt(get()) }
 }

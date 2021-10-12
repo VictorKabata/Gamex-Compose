@@ -1,5 +1,8 @@
 package com.vickikbt.gamex.ui.screens.home.components
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,9 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.ImagePainter
@@ -31,23 +34,31 @@ import com.vickikbt.gamex.ui.theme.TextColorGray
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
+@ExperimentalMaterialApi
 @Composable
 fun GameItem(
     game: Game,
     viewModel: HomeViewModel = getViewModel(),
     onItemClick: (Game) -> Unit
 ) {
-    val defaultDominantBackgroundColor = MaterialTheme.colors.surface
-    val defaultDominantTextColor = Color.Gray
+    val defaultDominantColor = MaterialTheme.colors.surface
+    val dominantColor = remember { mutableStateOf(defaultDominantColor) }
+    val dominantTextColor = remember { mutableStateOf(defaultDominantColor) }
 
-    val dominantBackgroundColor = remember { mutableStateOf(defaultDominantBackgroundColor) }
-    val dominantTextColor = remember { mutableStateOf(defaultDominantTextColor) }
+    val expandedState = remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
-            .padding(8.dp),
-        elevation = 10.dp,
-        shape = RoundedCornerShape(8.dp)
+            .padding(8.dp)
+            .animateContentSize(
+                animationSpec = tween(
+                    durationMillis = 500,
+                    easing = LinearOutSlowInEasing
+                )
+            ),
+        elevation = 16.dp,
+        shape = RoundedCornerShape(8.dp),
+        onClick = { expandedState.value = !expandedState.value }
     ) {
         Column(
             modifier = Modifier
@@ -55,8 +66,8 @@ fun GameItem(
                 .background(
                     Brush.verticalGradient(
                         listOf(
-                            dominantBackgroundColor.value,
-                            defaultDominantBackgroundColor
+                            dominantColor.value,
+                            MaterialTheme.colors.surface
                         )
                     )
                 )
@@ -82,7 +93,7 @@ fun GameItem(
                     launch {
                         val imageDrawable = painter.imageLoader.execute(painter.request).drawable
                         viewModel.getImageDominantSwatch(imageDrawable!!) {
-                            dominantBackgroundColor.value = Color(it.rgb)
+                            dominantColor.value = Color(it.rgb)
                             dominantTextColor.value = Color(it.titleTextColor)
                         }
                     }
@@ -135,9 +146,131 @@ fun GameItem(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.ExtraBold,
                 maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Start,
+                color = TextColorGray
+            )
+
+            if (expandedState.value) {
+                //Release date Row
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+
+                    Text(
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
+                        text = "Release date: ",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Medium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Start,
+                        color = TextColorGray
+                    )
+
+                    Text(
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
+                        text = game.released.toString(),
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Start,
+                        color = TextColorGray
+                    )
+
+                }
+
+                //Genre list Row
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+
+                    Text(
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
+                        text = "Genres: ",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Medium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Start,
+                        color = TextColorGray
+                    )
+
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        game.genres?.forEach { genre ->
+                            Text(
+                                modifier = Modifier.padding(horizontal = 2.dp),
+                                text = genre.name.toString(),
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Bold,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                textAlign = TextAlign.Start,
+                                color = TextColorGray
+                            )
+                        }
+                    }
+
+                }
+
+                //More Details button
+                GradientButton(
+                    text = "More Details",
+                    gradient = Brush.horizontalGradient(listOf(dominantColor.value, dominantTextColor.value)),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    onClick = { onItemClick }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun GradientButton(
+    text: String,
+    gradient: Brush,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+) {
+    Button(
+        modifier = modifier,
+        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+        contentPadding = PaddingValues(),
+        shape = RoundedCornerShape(8.dp),
+        onClick = { onClick() },
+    ) {
+        Box(
+            modifier = Modifier
+                .background(gradient)
+                .then(modifier),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                modifier = Modifier.padding(vertical = 6.dp),
+                text = text,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
                 color = TextColorGray
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun Preview() {
+    //GameItem(game = , onItemClick = )
 }
