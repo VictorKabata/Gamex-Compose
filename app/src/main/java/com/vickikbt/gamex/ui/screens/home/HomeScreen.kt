@@ -2,29 +2,25 @@ package com.vickikbt.gamex.ui.screens.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
 import com.vickikbt.domain.models.Game
 import com.vickikbt.gamex.R
+import com.vickikbt.gamex.ui.screens.home.components.GameItem
 import com.vickikbt.gamex.ui.theme.ColorPrimary
 import org.koin.androidx.compose.getViewModel
 import timber.log.Timber
@@ -64,42 +60,12 @@ fun SearchBar() {
 @Composable
 fun GamesGrid(gamesList: List<Game>) {
 
-    LazyVerticalGrid(cells = GridCells.Fixed(2), contentPadding = PaddingValues(8.dp)) {
+    LazyColumn(contentPadding = PaddingValues(8.dp)) {
         items(gamesList) { item ->
-            GameGridItem(gameImageUrl = item.background_image, gameTitle = item.name!!) {
+            GameItem(game = item) {
                 //ToDo: Navigate to game detail on click
             }
         }
-    }
-}
-
-@Composable
-fun GameGridItem(gameImageUrl: String?, gameTitle: String, onItemClick: (Game) -> Unit) {
-    Column(modifier = Modifier.padding(8.dp)) {
-        Card(
-            modifier = Modifier
-                .height(220.dp)
-                .width(220.dp),
-            elevation = 8.dp,
-            shape = RoundedCornerShape(8.dp)
-        ) {
-            Image(
-                modifier = Modifier.fillMaxSize(),
-                alignment = Alignment.Center,
-                contentScale = ContentScale.Crop,
-                painter = rememberImagePainter(
-                    data = gameImageUrl,
-                    builder = { crossfade(true) }), contentDescription = null
-            )
-        }
-
-        Text(
-            text = gameTitle,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 2,
-            textAlign = TextAlign.Start
-        )
     }
 }
 
