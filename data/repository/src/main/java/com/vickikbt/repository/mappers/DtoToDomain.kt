@@ -68,6 +68,7 @@ internal fun GameDto.toDomain(): Game {
         name = this.name,
         platforms = this.platforms?.map { it.toDomain() },
         playtime = this.playtime,
+        metacritic = this.metacritic,
         rating = this.rating,
         rating_top = this.ratingTop,
         ratings = this.ratings?.map { it.toDomain() },

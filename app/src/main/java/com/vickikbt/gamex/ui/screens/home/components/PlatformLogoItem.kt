@@ -15,8 +15,8 @@ import com.vickikbt.gamex.R
 fun PlatformLogoItem(platformImageResource: Int) {
     Image(
         modifier = Modifier
-            .size(24.dp)
-            .padding(horizontal = 2.dp),
+            .size(22.dp)
+            .padding(horizontal = 1.dp),
         alignment = Alignment.Center,
         painter = rememberImagePainter(
             data = platformImageResource,

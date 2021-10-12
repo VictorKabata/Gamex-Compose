@@ -10,6 +10,7 @@ data class Game(
     val id: Int?,
     val name: String?,
     val platforms: List<Platforms>?,
+    val metacritic:Int?,
     val playtime: Int?,
     val rating: Double?,
     val rating_top: Int?,

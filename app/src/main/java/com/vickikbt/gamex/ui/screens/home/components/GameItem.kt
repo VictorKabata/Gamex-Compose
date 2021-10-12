@@ -1,15 +1,18 @@
 package com.vickikbt.gamex.ui.screens.home.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -54,14 +57,26 @@ fun GameItem(
                     }
                 }
 
-                if (game.rating!! > 0 || game.rating != null) {
-                    Text(
-                        text = game.rating.toString(),
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Medium,
-                        maxLines = 1,
-                        textAlign = TextAlign.Center
-                    )
+                if (game.metacritic != null) {
+                    val ratingColor =
+                        if (game.metacritic!! <= 40) Color.Red else if (game.metacritic!! <= 70) Color.Yellow else Color.Green
+
+                    Card(
+                        elevation = 8.dp,
+                        border = BorderStroke(1.dp, ratingColor),
+                        shape = RoundedCornerShape(6.dp),
+                        backgroundColor = MaterialTheme.colors.surface
+                    ) {
+                        Text(
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 1.dp),
+                            text = game.metacritic.toString(),
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            maxLines = 1,
+                            textAlign = TextAlign.Center,
+                            color = ratingColor
+                        )
+                    }
                 }
             }
 

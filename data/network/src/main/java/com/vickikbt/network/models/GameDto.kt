@@ -31,6 +31,9 @@ data class GameDto(
     @SerializedName("platforms")
     val platforms: List<PlatformsDto>?,
 
+    @SerializedName("metacritic")
+    val metacritic: Int?,
+
     @SerializedName("playtime")
     val playtime: Int?,
 
