@@ -12,6 +12,7 @@ buildscript {
         coil_version= '1.4.0'
         timber_version="5.0.1"
         paging_version = "3.0.0"
+        palette_version="28.0.0"
 
         //Data layer
         retrofit_version = '2.9.0'
