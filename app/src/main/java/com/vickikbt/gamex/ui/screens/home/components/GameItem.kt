@@ -27,6 +27,7 @@ import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.vickikbt.domain.models.Game
 import com.vickikbt.gamex.ui.screens.home.HomeViewModel
+import com.vickikbt.gamex.ui.theme.TextColorGray
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
@@ -37,7 +38,7 @@ fun GameItem(
     onItemClick: (Game) -> Unit
 ) {
     val defaultDominantBackgroundColor = MaterialTheme.colors.surface
-    val defaultDominantTextColor = MaterialTheme.colors.onSurface
+    val defaultDominantTextColor = Color.Gray
 
     val dominantBackgroundColor = remember { mutableStateOf(defaultDominantBackgroundColor) }
     val dominantTextColor = remember { mutableStateOf(defaultDominantTextColor) }
@@ -135,7 +136,7 @@ fun GameItem(
                 fontWeight = FontWeight.ExtraBold,
                 maxLines = 2,
                 textAlign = TextAlign.Start,
-                color = dominantTextColor.value
+                color = TextColorGray
             )
         }
     }
