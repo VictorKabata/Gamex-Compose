@@ -44,9 +44,9 @@ fun platformLogo(platforms: List<Platforms>): List<Int> {
             platformLogosList.add(R.drawable.ic_apple)
         } else if (platformName.contains("nintendo") || platformName.contains("switch")) {
             //platformLogosList.add(R.drawable.ic_windows)
-            //ToDo: Display log for nitendo
+            //ToDo: Display log for nintendo
         }
     }
 
-    return platformLogosList
+    return platformLogosList.toSet().toList()
 }
