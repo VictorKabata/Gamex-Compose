@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,7 +59,10 @@ fun BottomNavigationBar(navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(15.dp), elevation = 10.dp, shape = RoundedCornerShape(10.dp)
+            .padding(horizontal = 15.dp, vertical = 8.dp)
+            .alpha(0.85F),
+        elevation = 10.dp,
+        shape = RoundedCornerShape(10.dp)
     ) {
         val backStackEntry = navController.currentBackStackEntryAsState()
 

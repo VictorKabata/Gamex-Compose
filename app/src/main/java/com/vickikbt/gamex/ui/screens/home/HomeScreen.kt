@@ -2,6 +2,7 @@ package com.vickikbt.gamex.ui.screens.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -36,6 +37,7 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
         if (gameList != null) GamesGrid(gamesList = gameList)
         else Timber.e("Games list is null")
     }
+
 }
 
 @Composable

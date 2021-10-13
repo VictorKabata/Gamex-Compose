@@ -6,6 +6,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import com.vickikbt.gamex.R
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.fontResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -128,10 +132,10 @@ fun GameItem(
                         backgroundColor = Color.Transparent
                     ) {
                         Text(
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 1.dp),
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 2.dp),
                             text = game.metacritic.toString(),
                             fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.h5,
                             maxLines = 1,
                             textAlign = TextAlign.Center,
                             color = ratingColor
@@ -144,8 +148,8 @@ fun GameItem(
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
                 text = game.name.toString(),
                 fontSize = 24.sp,
-                fontWeight = FontWeight.ExtraBold,
                 maxLines = 2,
+                style = MaterialTheme.typography.h2,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Start,
                 color = TextSecondary
@@ -165,7 +169,7 @@ fun GameItem(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
                         text = "Release date: ",
                         fontSize = 14.sp,
-                        fontWeight = FontWeight.Medium,
+                        style = MaterialTheme.typography.body1,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Start,
@@ -176,7 +180,7 @@ fun GameItem(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
                         text = game.released.toString(),
                         fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.h5,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Start,
@@ -198,7 +202,7 @@ fun GameItem(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
                         text = "Genres: ",
                         fontSize = 14.sp,
-                        fontWeight = FontWeight.Medium,
+                        style = MaterialTheme.typography.body1,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Start,
@@ -211,7 +215,7 @@ fun GameItem(
                                 modifier = Modifier.padding(horizontal = 2.dp),
                                 text = genre.name.toString(),
                                 fontSize = 15.sp,
-                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.h5,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
                                 textAlign = TextAlign.Start,
