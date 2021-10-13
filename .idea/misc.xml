@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Kotlin/Gamex/app/src/main/res/drawable/ic_filter.xml" value="0.33589743589743587" />
         <entry key="..\:/Projects/Kotlin/Gamex/app/src/main/res/drawable/ic_home.xml" value="0.33589743589743587" />
+        <entry key="..\:/Projects/Kotlin/Gamex/app/src/main/res/layout/tbd.xml" value="0.325" />
       </map>
     </option>
   </component>

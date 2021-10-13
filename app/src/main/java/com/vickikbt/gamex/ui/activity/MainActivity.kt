@@ -22,6 +22,7 @@ import com.vickikbt.gamex.ui.navigation.NavigationItem
 import com.vickikbt.gamex.ui.theme.ColorPrimary
 import com.vickikbt.gamex.ui.theme.GamexTheme
 
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 class MainActivity : ComponentActivity() {
 
@@ -39,6 +40,7 @@ class MainActivity : ComponentActivity() {
 
 }
 
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 @Composable
 fun MainScreen() {
@@ -51,7 +53,7 @@ fun MainScreen() {
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
-    val items = listOf(NavigationItem.Home, NavigationItem.Favorite, NavigationItem.Settings)
+    val items = listOf(NavigationItem.Home, NavigationItem.Search, NavigationItem.Favorite)
 
     Card(
         modifier = Modifier

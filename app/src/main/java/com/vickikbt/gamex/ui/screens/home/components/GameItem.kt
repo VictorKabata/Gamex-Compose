@@ -30,7 +30,7 @@ import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.vickikbt.domain.models.Game
 import com.vickikbt.gamex.ui.screens.home.HomeViewModel
-import com.vickikbt.gamex.ui.theme.TextColorGray
+import com.vickikbt.gamex.ui.theme.TextSecondary
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
@@ -148,7 +148,7 @@ fun GameItem(
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Start,
-                color = TextColorGray
+                color = TextSecondary
             )
 
             if (expandedState.value) {
@@ -169,7 +169,7 @@ fun GameItem(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Start,
-                        color = TextColorGray
+                        color = TextSecondary
                     )
 
                     Text(
@@ -180,7 +180,7 @@ fun GameItem(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Start,
-                        color = TextColorGray
+                        color = TextSecondary
                     )
 
                 }
@@ -202,7 +202,7 @@ fun GameItem(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Start,
-                        color = TextColorGray
+                        color = TextSecondary
                     )
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -215,7 +215,7 @@ fun GameItem(
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
                                 textAlign = TextAlign.Start,
-                                color = TextColorGray
+                                color = TextSecondary
                             )
                         }
                     }
@@ -225,7 +225,12 @@ fun GameItem(
                 //More Details button
                 GradientButton(
                     text = "More Details",
-                    gradient = Brush.horizontalGradient(listOf(dominantColor.value, dominantTextColor.value)),
+                    gradient = Brush.horizontalGradient(
+                        listOf(
+                            dominantColor.value,
+                            dominantColor.value.copy(alpha = 0.3F)
+                        )
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 12.dp, vertical = 8.dp),
@@ -257,13 +262,14 @@ fun GradientButton(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                modifier = Modifier.padding(vertical = 6.dp),
+                modifier = Modifier
+                    .padding(vertical = 6.dp)
+                    .background(color = Color.Transparent),
                 text = text,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.body1,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = TextColorGray
+                color = TextSecondary
             )
         }
     }

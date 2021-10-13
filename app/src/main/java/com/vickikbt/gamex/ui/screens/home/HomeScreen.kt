@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -20,16 +21,18 @@ import androidx.compose.ui.unit.sp
 import com.vickikbt.domain.models.Game
 import com.vickikbt.gamex.R
 import com.vickikbt.gamex.ui.screens.home.components.GameItem
+import com.vickikbt.gamex.ui.screens.home.components.HomeToolbar
 import com.vickikbt.gamex.ui.theme.ColorPrimary
 import org.koin.androidx.compose.getViewModel
 import timber.log.Timber
 
+@ExperimentalMaterialApi
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
     val gamesState = viewModel.state.value
     val gameList = gamesState.games?.results
 
-    Scaffold(topBar = { SearchBar() }) {
+    Scaffold(topBar = { HomeToolbar() }) {
         if (gameList != null) GamesGrid(gamesList = gameList)
         else Timber.e("Games list is null")
     }
@@ -54,6 +57,7 @@ fun SearchBar() {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun GamesGrid(gamesList: List<Game>) {
 

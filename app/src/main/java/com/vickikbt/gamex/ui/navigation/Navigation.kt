@@ -1,14 +1,16 @@
 package com.vickikbt.gamex.ui.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.vickikbt.gamex.ui.screens.favorites.FavoritesScreen
 import com.vickikbt.gamex.ui.screens.home.HomeScreen
-import com.vickikbt.gamex.ui.screens.settings.SettingsScreen
+import com.vickikbt.gamex.ui.screens.search.SearchScreen
 
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -17,12 +19,12 @@ fun Navigation(navController: NavHostController) {
             HomeScreen()
         }
 
-        composable(NavigationItem.Favorite.route) {
-            FavoritesScreen()
+        composable(NavigationItem.Search.route) {
+            SearchScreen()
         }
 
-        composable(NavigationItem.Settings.route) {
-            SettingsScreen()
+        composable(NavigationItem.Favorite.route) {
+            FavoritesScreen()
         }
 
         //ToDo: Navigate to game details screen

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Gamex</string>
+    <string name="home">Home</string>
     <string name="search">Search</string>
+    <string name="favorites">Favorites</string>
+
+    <string name="new_and_trending">New and trending</string>
+    <string name="new_and_trending_description">Based on player counts and release dates</string>
 </resources>
