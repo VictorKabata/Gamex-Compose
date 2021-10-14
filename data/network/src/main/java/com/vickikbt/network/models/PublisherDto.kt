@@ -1,17 +1,14 @@
 package com.vickikbt.network.models
 
+
 import com.google.gson.annotations.SerializedName
 
-data class PlatformDto(
-
+data class PublisherDto(
     @SerializedName("games_count")
     val gamesCount: Int?,
 
     @SerializedName("id")
     val id: Int?,
-
-    @SerializedName("image")
-    val image: String?,
 
     @SerializedName("image_background")
     val imageBackground: String?,
@@ -20,11 +17,5 @@ data class PlatformDto(
     val name: String?,
 
     @SerializedName("slug")
-    val slug: String?,
-
-    @SerializedName("year_end")
-    val yearEnd: String?,
-
-    @SerializedName("year_start")
-    val yearStart: Int?
+    val slug: String?
 )

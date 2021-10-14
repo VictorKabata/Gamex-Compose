@@ -1,6 +1,6 @@
 package com.vickikbt.domain.models
 
-data class Platform(
+data class PlatformDetail(
     val games_count: Int?,
     val id: Int?,
     val image: String?,

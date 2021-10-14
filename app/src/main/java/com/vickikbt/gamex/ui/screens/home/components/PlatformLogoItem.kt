@@ -28,7 +28,7 @@ fun platformLogo(platforms: List<Platforms>): List<Int> {
     val platformLogosList = mutableListOf<Int>()
 
     platforms.forEach { platformItem ->
-        val platformName = platformItem.platform!!.name!!.lowercase()
+        val platformName = platformItem.platformDetail!!.name!!.lowercase()
 
         if (platformName.contains("pc") || platformName.contains("windows")) {
             platformLogosList.add(R.drawable.ic_windows)

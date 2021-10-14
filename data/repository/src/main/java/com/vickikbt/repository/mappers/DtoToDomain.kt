@@ -27,8 +27,8 @@ internal fun GenreDto.toDomain(): Genre {
 
 }
 
-internal fun PlatformDto.toDomain(): Platform {
-    return Platform(
+internal fun PlatformDetailDto.toDomain(): PlatformDetail {
+    return PlatformDetail(
         games_count = this.gamesCount,
         id = this.id,
         image = this.image,
@@ -42,7 +42,7 @@ internal fun PlatformDto.toDomain(): Platform {
 
 internal fun PlatformsDto.toDomain(): Platforms {
     return Platforms(
-        platform = this.platform?.toDomain()
+        platformDetail = this.platformDetail?.toDomain()
     )
 
 }
