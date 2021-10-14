@@ -1,5 +1,7 @@
 package com.vickikbt.network
 
+import com.vickikbt.common.Constants
+import com.vickikbt.network.models.GameDetailsResponseDto
 import com.vickikbt.network.models.GamesResponseDto
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,6 +15,12 @@ interface ApiService {
         @Query("ordering") ordering: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ):Response<GamesResponseDto>
+    ): Response<GamesResponseDto>
+
+    @GET("{id}")
+    suspend fun getGameDetails(
+        @Query("key") apiKey: String = Constants.API_KEY,
+        @Query("id") gameId: Int
+    ): Response<GameDetailsResponseDto>
 
 }

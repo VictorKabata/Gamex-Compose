@@ -103,3 +103,61 @@ internal fun TagDto.toDomain(): Tag {
         slug = this.slug
     )
 }
+
+internal fun DeveloperDto.toDomain(): Developer {
+    return Developer(
+        gamesCount = this.gamesCount,
+        id = this.id,
+        imageBackground = this.imageBackground,
+        name = this.name,
+        slug = this.slug
+    )
+}
+
+internal fun PublisherDto.toDomain(): Publisher {
+    return Publisher(
+        gamesCount = this.gamesCount,
+        id = this.id,
+        imageBackground = this.imageBackground,
+        name = this.name,
+        slug = this.slug
+    )
+}
+
+internal fun GameDetailsResponseDto.toDomain(): GameDetailsResponse {
+    return GameDetailsResponse(
+        achievementsCount = this.achievementsCount,
+        added = this.added,
+        additionsCount = this.additionsCount,
+        backgroundImage = this.backgroundImage,
+        backgroundImageAdditional = this.backgroundImageAdditional,
+        clip = this.clip,
+        creatorsCount = this.creatorsCount,
+        description = this.description,
+        descriptionRaw = this.descriptionRaw,
+        developers = this.developer?.map { it.toDomain() },
+        esrbRating = this.esrbRating,
+        gameSeriesCount = this.gameSeriesCount,
+        genres = this.genres?.map { it.toDomain() },
+        id = this.id,
+        metacritic = this.metacritic,
+        moviesCount = this.moviesCount,
+        name = this.name,
+        nameOriginal = this.nameOriginal,
+        parentAchievementsCount = this.parentAchievementsCount,
+        platforms = this.platforms?.map { it.toDomain() },
+        playtime = this.playtime,
+        publishers = this.publisher?.map { it.toDomain() },
+        rating = this.rating,
+        ratingTop = this.ratingTop,
+        ratings = this.ratings?.map { it.toDomain() },
+        released = this.released,
+        screenshotsCount = this.screenshotsCount,
+        slug = this.slug,
+        suggestionsCount = this.suggestionsCount,
+        tags = this.tags?.map { it.toDomain() },
+        tba = this.tba,
+        updated = this.updated,
+        website = this.website
+    )
+}

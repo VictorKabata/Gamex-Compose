@@ -32,10 +32,7 @@ data class GameDetailsResponseDto(
     val descriptionRaw: String?,
 
     @SerializedName("developers")
-    val developerDtos: List<DeveloperDto>?,
-
-    @SerializedName("dominant_color")
-    val dominantColor: String?,
+    val developer: List<DeveloperDto>?,
 
     @SerializedName("esrb_rating")
     val esrbRating: Int?,
@@ -71,7 +68,7 @@ data class GameDetailsResponseDto(
     val playtime: Int?,
 
     @SerializedName("publishers")
-    val publisherDtos: List<PublisherDto>?,
+    val publisher: List<PublisherDto>?,
 
     @SerializedName("rating")
     val rating: Double?,
