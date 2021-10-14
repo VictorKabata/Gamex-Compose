@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.vickikbt.gamex.ui.screens.favorites.FavoritesScreen
+import com.vickikbt.gamex.ui.screens.games_detail.GameDetailsScreen
 import com.vickikbt.gamex.ui.screens.home.HomeScreen
 import com.vickikbt.gamex.ui.screens.search.SearchScreen
 
@@ -16,7 +17,7 @@ import com.vickikbt.gamex.ui.screens.search.SearchScreen
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = NavigationItem.Home.route) {
         composable(NavigationItem.Home.route) {
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
 
         composable(NavigationItem.Search.route) {
@@ -27,9 +28,9 @@ fun Navigation(navController: NavHostController) {
             FavoritesScreen()
         }
 
-        //ToDo: Navigate to game details screen
-        /*composable(NavigationItem.Settings.route){
-            SettingsScreen()
-        }*/
+        composable(NavigationItem.GameDetails.route + "{gameId}") {
+            val gameId=it.arguments?.getInt("gameId")
+            GameDetailsScreen(gameIdArg=gameId!!)
+        }
     }
 }

@@ -1,46 +1,34 @@
 package com.vickikbt.gamex.ui.screens.home
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.vickikbt.domain.models.Game
-import com.vickikbt.gamex.R
 import com.vickikbt.gamex.ui.screens.home.components.GameItem
 import com.vickikbt.gamex.ui.screens.home.components.HomeToolbar
-import com.vickikbt.gamex.ui.theme.ColorPrimary
 import org.koin.androidx.compose.getViewModel
 import timber.log.Timber
 
 @ExperimentalMaterialApi
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
+fun HomeScreen(viewModel: HomeViewModel = getViewModel(), navController: NavHostController) {
     val gamesState = viewModel.state.value
     val gameList = gamesState.games?.results
 
     Scaffold(topBar = { HomeToolbar() }) {
-        if (gameList != null) GamesGrid(gamesList = gameList)
+        if (gameList != null) GamesGrid(gamesList = gameList, navController = navController)
         else Timber.e("Games list is null")
     }
 
 }
 
-@Composable
+//ToDo: Search Bar
+/*@Composable
 fun SearchBar() {
     Card(
         modifier = Modifier
@@ -57,23 +45,18 @@ fun SearchBar() {
             color = Color.Gray
         )
     }
-}
+}*/
 
 @ExperimentalMaterialApi
 @Composable
-fun GamesGrid(gamesList: List<Game>) {
+fun GamesGrid(gamesList: List<Game>, navController: NavHostController) {
 
     LazyColumn(contentPadding = PaddingValues(8.dp)) {
         items(gamesList) { item ->
             GameItem(game = item) {
-                //ToDo: Navigate to game detail on click
+                Timber.e("Clicked more details button")
+                navController.navigate("details/${it.id}")
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Preview() {
-    //HomeScreen()
 }

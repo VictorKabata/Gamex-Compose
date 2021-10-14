@@ -76,7 +76,7 @@ fun BottomNavigationBar(navController: NavController) {
                 BottomNavigationItem(
                     icon = {
                         Icon(
-                            painterResource(id = item.icon),
+                            painterResource(id = item.icon!!),
                             contentDescription = item.title
                         )
                     },
