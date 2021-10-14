@@ -4,8 +4,10 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
 import com.vickikbt.gamex.ui.screens.favorites.FavoritesScreen
 import com.vickikbt.gamex.ui.screens.games_detail.GameDetailsScreen
 import com.vickikbt.gamex.ui.screens.home.HomeScreen
@@ -28,9 +30,12 @@ fun Navigation(navController: NavHostController) {
             FavoritesScreen()
         }
 
-        composable(NavigationItem.GameDetails.route + "{gameId}") {
-            val gameId=it.arguments?.getInt("gameId")
-            GameDetailsScreen(gameIdArg=gameId!!)
+        composable(
+            NavigationItem.GameDetails.route + "{gameId}",
+            arguments = listOf(navArgument("gameId") {type= NavType.IntType})
+        ) {
+            val gameId = it.arguments?.getInt("gameId")
+            GameDetailsScreen(gameIdArg = gameId!!)
         }
     }
 }

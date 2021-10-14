@@ -6,4 +6,6 @@
 
     <string name="new_and_trending">New and trending</string>
     <string name="new_and_trending_description">Based on player counts and release dates</string>
+
+    <string name="more_details">More Details</string>
 </resources>
