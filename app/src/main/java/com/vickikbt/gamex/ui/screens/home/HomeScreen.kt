@@ -53,7 +53,7 @@ fun SearchBar() {
 @Composable
 fun GamesGrid(gamesList: List<Game>, navController: NavHostController) {
 
-    LazyColumn(modifier = Modifier.padding(bottom = 68.dp),contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
+    LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
         items(gamesList) { item ->
             GameItem(game = item) {
                 navController.navigate("details/${it.id}")

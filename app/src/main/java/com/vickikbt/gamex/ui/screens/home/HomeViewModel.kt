@@ -23,7 +23,7 @@ class HomeViewModel constructor(private val getGamesUseCase: GetGamesUseCase) : 
     }
 
     private fun getGames() {
-        val gamesResponse = getGamesUseCase.invoke(ordering = "relevance", page = 1, perPage = 20)
+        val gamesResponse = getGamesUseCase.invoke(ordering = "relevance", page = 1, perPage = 10)
         gamesResponse.onEach { result ->
             when (result) {
                 is Resource.Loading -> {
@@ -36,7 +36,7 @@ class HomeViewModel constructor(private val getGamesUseCase: GetGamesUseCase) : 
 
                 is Resource.Error -> {
                     _state.value =
-                        GamesListState(error = result.message ?: "An unexpected error occured")
+                        GamesListState(error = result.message ?: "An unexpected error occurred")
                 }
             }
         }.launchIn(viewModelScope)

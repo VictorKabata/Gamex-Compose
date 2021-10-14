@@ -1,10 +1,10 @@
 package com.vickikbt.network
 
-import com.vickikbt.common.Constants
 import com.vickikbt.network.models.GameDetailsResponseDto
 import com.vickikbt.network.models.GamesResponseDto
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -19,8 +19,8 @@ interface ApiService {
 
     @GET("{id}")
     suspend fun getGameDetails(
-        @Query("key") apiKey: String = Constants.API_KEY,
-        @Query("id") gameId: Int
+        @Path("id") gameId: Int,
+        @Query("key") apiKey: String
     ): Response<GameDetailsResponseDto>
 
 }

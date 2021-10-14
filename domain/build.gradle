@@ -10,6 +10,11 @@ java {
 
 dependencies{
     implementation project(":common")
+    
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
     implementation "io.insert-koin:koin-core:$koin_version"
+
+    //Timber-Logging
+    api "com.jakewharton.timber:timber:$timber_version"
 }
