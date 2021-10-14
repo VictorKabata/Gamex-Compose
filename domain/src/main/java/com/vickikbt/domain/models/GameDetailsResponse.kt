@@ -12,7 +12,6 @@ data class GameDetailsResponse(
     val description: String?,
     val descriptionRaw: String?,
     val developers: List<Developer>?,
-    val esrbRating: Int?,
     val gameSeriesCount: Int?,
     val genres: List<Genre>?,
     val id: Int,

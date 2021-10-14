@@ -21,8 +21,6 @@ class GameDetailsViewModel constructor(private val getGameDetailsUseCase: GetGam
     fun getGameDetails(gameId: Int) {
         val gameDetailsResponse = getGameDetailsUseCase.invoke(gameId = gameId)
 
-        Timber.e("GameId in viewModel: $gameId")
-
         gameDetailsResponse.onEach { result ->
             when (result) {
                 is Resource.Loading -> {

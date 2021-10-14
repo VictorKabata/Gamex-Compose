@@ -23,7 +23,7 @@ class HomeViewModel constructor(private val getGamesUseCase: GetGamesUseCase) : 
     }
 
     private fun getGames() {
-        val gamesResponse = getGamesUseCase.invoke(ordering = "relevance", page = 1, perPage = 10)
+        val gamesResponse = getGamesUseCase.invoke(ordering = "relevance", page = 1, perPage = 5)
         gamesResponse.onEach { result ->
             when (result) {
                 is Resource.Loading -> {

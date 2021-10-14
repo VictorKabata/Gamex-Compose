@@ -136,7 +136,6 @@ internal fun GameDetailsResponseDto.toDomain(): GameDetailsResponse {
         description = this.description,
         descriptionRaw = this.descriptionRaw,
         developers = this.developer?.map { it.toDomain() },
-        esrbRating = this.esrbRating,
         gameSeriesCount = this.gameSeriesCount,
         genres = this.genres?.map { it.toDomain() },
         id = this.id,

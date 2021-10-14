@@ -34,9 +34,6 @@ data class GameDetailsResponseDto(
     @SerializedName("developers")
     val developer: List<DeveloperDto>?,
 
-    @SerializedName("esrb_rating")
-    val esrbRating: Int?,
-
     @SerializedName("game_series_count")
     val gameSeriesCount: Int?,
 

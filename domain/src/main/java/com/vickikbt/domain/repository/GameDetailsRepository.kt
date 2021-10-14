@@ -2,7 +2,7 @@ package com.vickikbt.domain.repository
 
 import com.vickikbt.domain.models.GameDetailsResponse
 
-interface GameDetailRepository {
+interface GameDetailsRepository {
 
     suspend fun getGameDetails(gameId:Int):GameDetailsResponse
 
