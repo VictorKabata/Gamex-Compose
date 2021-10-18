@@ -26,7 +26,7 @@ fun GameDetailsScreen(gameIdArg: Int, viewModel: GameDetailsViewModel = getViewM
 
     Timber.e("Game id: $gameIdArg")
 
-    viewModel.getGameDetails(gameId = gameIdArg)
+    //viewModel.getGameDetails(gameId = gameIdArg)
 
     val gameDetailsState = viewModel.state.value
     val gameDetails = gameDetailsState.gameDetails
@@ -44,11 +44,10 @@ fun GameDetailsScreen(gameIdArg: Int, viewModel: GameDetailsViewModel = getViewM
 
 @Composable
 fun BackgroundImage(viewModel: GameDetailsViewModel, gameDetails: GameDetailsResponse) {
+
     val defaultDominantColor = MaterialTheme.colors.surface
     val dominantColor = remember { mutableStateOf(defaultDominantColor) }
     val dominantTextColor = remember { mutableStateOf(defaultDominantColor) }
-
-    Timber.e("Displaying game image background")
 
     val painter = rememberImagePainter(
         data = gameDetails.backgroundImage,

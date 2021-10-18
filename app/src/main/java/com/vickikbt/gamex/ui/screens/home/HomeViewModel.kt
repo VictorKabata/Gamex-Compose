@@ -12,6 +12,7 @@ import com.vickikbt.common.Resource
 import com.vickikbt.domain.usecases.GetGamesUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 
 class HomeViewModel constructor(private val getGamesUseCase: GetGamesUseCase) : ViewModel() {
 
@@ -25,6 +26,9 @@ class HomeViewModel constructor(private val getGamesUseCase: GetGamesUseCase) : 
     private fun getGames() {
         val gamesResponse = getGamesUseCase.invoke(ordering = "relevance", page = 1, perPage = 5)
         gamesResponse.onEach { result ->
+            Timber.e("Getting games in home viewModel")
+            Timber.e("Home results: $result")
+
             when (result) {
                 is Resource.Loading -> {
                     _state.value = GamesListState(isLoading = true)
