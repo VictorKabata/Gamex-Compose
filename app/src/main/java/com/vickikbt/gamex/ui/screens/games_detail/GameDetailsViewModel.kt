@@ -19,9 +19,6 @@ class GameDetailsViewModel constructor(private val getGameDetailsUseCase: GetGam
     private val _state = mutableStateOf(GameDetailsState())
     val state: State<GameDetailsState> = _state
 
-    init {
-        getGameDetails()
-    }
 
     /*fun getGameDetails(gameId: Int=26251) {
         val gameDetailsResponse = getGameDetailsUseCase.invoke(gameId = gameId)
@@ -51,7 +48,7 @@ class GameDetailsViewModel constructor(private val getGameDetailsUseCase: GetGam
     }*/
 
     //ToDo: Revert back to using flow
-    fun getGameDetails(gameId: Int = 26251) {
+    fun getGameDetails(gameId: Int) {
         viewModelScope.launch {
             val result = getGameDetailsUseCase.invoke(gameId = gameId)
 
