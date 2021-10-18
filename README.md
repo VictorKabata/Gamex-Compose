@@ -3,9 +3,11 @@
  An android application that consumes [RAWG API](https://rawg.io/) to display a list of popular video games built using [Jetpack Compose](https://developer.android.com/jetpack/compose) and [Koin](https://insert-koin.io/) for dependency injection based on modern android techstack and multi-modular clean architecture.
 
  # Screenshots
- Add screenshots later
+ 
+ <img src="assets/ss1.png" width="250"/> <img src="assets/ss2.png" width="250"/> <img src="assets/ss3.png" width="250"/>
 
  # Tech Stack and Open Sources Libs
+
  - [Koin](https://insert-koin.io/) - Dependency Injection library.
 - [Jetpack Components](https://developer.android.com/jetpack)
     - [Jetpack Compose](https://developer.android.com/jetpack/compose)- Modern toolkit for building native UI.
