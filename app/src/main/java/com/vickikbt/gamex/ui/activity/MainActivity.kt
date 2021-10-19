@@ -46,15 +46,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
+    val navBarItems = listOf(NavigationItem.Home, NavigationItem.Search, NavigationItem.Favorite)
+    val showNavBar = navController
+        .currentBackStackEntryAsState().value?.destination?.route in navBarItems.map {
+        it.route
+    }
 
-    Scaffold(bottomBar = { BottomNavigationBar(navController = navController) }) {
+    Scaffold(bottomBar = { if (showNavBar) {
+        BottomNavigationBar(navController = navController,navBarItems)
+    } }) {
         Navigation(navController = navController)
     }
 }
 
 @Composable
-fun BottomNavigationBar(navController: NavController) {
-    val items = listOf(NavigationItem.Home, NavigationItem.Search, NavigationItem.Favorite)
+fun BottomNavigationBar(navController: NavController,items: List<NavigationItem>) {
+
 
     Card(
         modifier = Modifier
@@ -107,8 +114,9 @@ fun BottomNavigationBar(navController: NavController) {
 @Composable
 fun BottomNavigationPreview() {
     val navController = rememberNavController()
+    val navBarItems = listOf(NavigationItem.Home, NavigationItem.Search, NavigationItem.Favorite)
 
     GamexTheme {
-        BottomNavigationBar(navController)
+        BottomNavigationBar(navController,navBarItems)
     }
 }
