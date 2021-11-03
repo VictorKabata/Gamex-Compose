@@ -27,26 +27,6 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel(), navController: NavHost
 
 }
 
-//ToDo: Search Bar
-/*@Composable
-fun SearchBar() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(15.dp),
-        elevation = 8.dp,
-        shape = RoundedCornerShape(10.dp),
-        border = BorderStroke(width = 0.5.dp, color = ColorPrimary)
-    ) {
-        Text(
-            modifier = Modifier.padding(vertical = 10.dp, horizontal = 16.dp),
-            text = stringResource(id = R.string.search),
-            fontSize = 20.sp,
-            color = Color.Gray
-        )
-    }
-}*/
-
 @ExperimentalMaterialApi
 @Composable
 fun GamesGrid(gamesList: List<Game>, navController: NavHostController) {
