@@ -31,7 +31,7 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(
-            NavigationItem.GameDetails.route + "{gameId}",
+            NavigationItem.GameDetails.route, // + "{gameId}",
             arguments = listOf(navArgument("gameId") { type = NavType.IntType })
         ) {
             val gameId = it.arguments?.getInt("gameId")
