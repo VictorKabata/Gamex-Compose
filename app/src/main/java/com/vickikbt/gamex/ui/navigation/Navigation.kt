@@ -32,10 +32,12 @@ fun Navigation(navController: NavHostController) {
 
         composable(
             NavigationItem.GameDetails.route + "{gameId}",
-            arguments = listOf(navArgument("gameId") {type= NavType.IntType})
+            arguments = listOf(navArgument("gameId") { type = NavType.IntType })
         ) {
             val gameId = it.arguments?.getInt("gameId")
-            GameDetailsScreen(gameIdArg = gameId!!)
+            GameDetailsScreen(gameIdArg = gameId!!) {
+                navController.navigateUp()
+            }
         }
     }
 }
