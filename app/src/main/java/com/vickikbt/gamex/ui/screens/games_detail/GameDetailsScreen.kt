@@ -111,102 +111,33 @@ fun GameDetail(gameDetails: GameDetailsResponse) {
         )
 
         //region About
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = "About",
-            fontSize = 20.sp,
-            maxLines = 1,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
+        DetailsText(text = "About")
 
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = gameDetails.descriptionRaw.toString(),
-            fontSize = 15.sp,
-            // lineHeight = 2.sp,
-            // letterSpacing = 5.sp,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
+        DetailsText(text = gameDetails.descriptionRaw.toString())
         //endregion
 
         Spacer(modifier = Modifier.height(12.dp))
 
         //region Release Date
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = "Release Date",
-            fontSize = 32.sp,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
 
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = gameDetails.released!!,
-            fontSize = 15.sp,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
+        gameDetails.released?.let {
+            DetailsText(text = "Release Date")
+
+            DetailsText(text = it)
+        }
+
         //endregion
 
         //region About
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = "About",
-            fontSize = 20.sp,
-            maxLines = 1,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
+        DetailsText(text = "About")
 
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = gameDetails.descriptionRaw.toString(),
-            fontSize = 15.sp,
-            // lineHeight = 2.sp,
-            // letterSpacing = 5.sp,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
+        DetailsText(text = gameDetails.descriptionRaw.toString())
         //endregion
 
         //region About
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = "About",
-            fontSize = 20.sp,
-            maxLines = 1,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
+        DetailsText(text = "About")
 
-        Text(
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
-            text = gameDetails.descriptionRaw.toString(),
-            fontSize = 15.sp,
-            // lineHeight = 2.sp,
-            // letterSpacing = 5.sp,
-            style = MaterialTheme.typography.h2,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Start,
-            color = TextSecondary
-        )
+        DetailsText( text = gameDetails.descriptionRaw.toString())
         //endregion
     }
 }
@@ -223,4 +154,18 @@ fun BackButton(modifier: Modifier = Modifier, upPressed: () -> Unit) {
             Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = null)
         }
     }
+}
+@Composable
+fun DetailsText(text: String) {
+    Text(
+        modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
+        text = text,
+        fontSize = 15.sp,
+        // lineHeight = 2.sp,
+        // letterSpacing = 5.sp,
+        style = MaterialTheme.typography.h2,
+        overflow = TextOverflow.Ellipsis,
+        textAlign = TextAlign.Start,
+        color = TextSecondary
+    )
 }
