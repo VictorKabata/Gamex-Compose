@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -55,8 +57,13 @@ fun MainScreen() {
         if (showNavBar) {
             BottomNavigationBar(navController = navController, navBarItems)
         }
-    }) {
-        Navigation(navController = navController)
+    }) { innerPadding ->
+        Box(
+            modifier = Modifier.padding(innerPadding)
+                .fillMaxSize()
+        ) {
+            Navigation(navController = navController)
+        }
     }
 }
 

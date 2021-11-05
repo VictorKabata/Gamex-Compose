@@ -38,7 +38,9 @@ fun GameDetailsScreen(
 
     Timber.e("Game id: $gameIdArg")
 
-    viewModel.getGameDetails(gameId = gameIdArg)
+    LaunchedEffect(key1 =gameIdArg){
+        viewModel.getGameDetails(gameId = gameIdArg)
+    }
 
     val gameDetailsState = viewModel.state.value
     val gameDetails = gameDetailsState.gameDetails
@@ -137,7 +139,7 @@ fun GameDetail(gameDetails: GameDetailsResponse) {
         //region About
         DetailsText(text = "About")
 
-        DetailsText( text = gameDetails.descriptionRaw.toString())
+        DetailsText(text = gameDetails.descriptionRaw.toString())
         //endregion
     }
 }
