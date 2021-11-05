@@ -38,7 +38,7 @@ fun GameDetailsScreen(
 
     Timber.e("Game id: $gameIdArg")
 
-    LaunchedEffect(key1 =gameIdArg){
+    LaunchedEffect(key1 = gameIdArg) {
         viewModel.getGameDetails(gameId = gameIdArg)
     }
 
@@ -163,7 +163,7 @@ fun DetailsText(text: String) {
         modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
         text = text,
         fontSize = 15.sp,
-        // lineHeight = 2.sp,
+        // lineHeight = 2.sp ,
         // letterSpacing = 5.sp,
         style = MaterialTheme.typography.h2,
         overflow = TextOverflow.Ellipsis,
